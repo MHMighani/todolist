@@ -1,8 +1,12 @@
 function TodoTask({ task }) {
   return (
     <>
-      <p className="todoTask__content">{task.content}</p>
-      <input type="checkbox" checked={task.done} className="todoTask__select" />
+      <p className="todoTask__text">{task.text}</p>
+      <input
+        type="checkbox"
+        checked={task.isDone}
+        className="todoTask__status"
+      />
     </>
   );
 }
