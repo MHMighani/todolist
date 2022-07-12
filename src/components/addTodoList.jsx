@@ -1,5 +1,6 @@
 import { useRef, useContext } from "react";
 import { TodoListsContext } from "../contexts/listsContext";
+import { getItemId } from "../utils";
 
 function AddTodoList() {
   const { addTodoList } = useContext(TodoListsContext);
@@ -17,7 +18,7 @@ function AddTodoList() {
     if (!titleValue.trim() || !descValue.trim()) return;
 
     const todoList = {
-      id: new Date().getTime(),
+      id: getItemId(),
       title: titleValue,
       description: descValue,
     };
