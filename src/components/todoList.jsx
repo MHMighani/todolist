@@ -5,7 +5,7 @@ function TodoList({ todoList }) {
     <>
       <h3 className="todoList__title">{todoList.title}</h3>
       <p className="todoList__description">{todoList.description}</p>
-      <TodoTasks tasks={todoList.tasks} />
+      <TodoTasks todoListId={todoList.id} />
     </>
   );
 }
