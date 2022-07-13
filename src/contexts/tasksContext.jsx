@@ -27,7 +27,7 @@ function TasksProvider({ children }) {
   const editTask = (taskId, editedTask) => {
     const newTasks = tasks.map((task) => {
       if (task.id === taskId) {
-        return { ...task, editedTask };
+        return { ...task, ...editedTask };
       } else {
         return task;
       }
