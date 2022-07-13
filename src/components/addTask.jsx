@@ -1,6 +1,7 @@
 import { useRef, useContext } from "react";
 import { TodoTasksContext } from "../contexts/tasksContext";
 import { getItemId } from "../utils";
+import resetInputs from "../utils/resetInputs";
 
 function AddTask({ todoListId }) {
   const { addTask } = useContext(TodoTasksContext);
@@ -21,6 +22,8 @@ function AddTask({ todoListId }) {
     };
 
     addTask(task);
+    // reset inputs to their empty state
+    resetInputs([taskTextInputRef]);
   };
   return (
     <form onSubmit={handleSubmit} className="addTaskForm">

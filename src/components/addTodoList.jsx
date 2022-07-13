@@ -1,6 +1,7 @@
 import { useRef, useContext } from "react";
 import { TodoListsContext } from "../contexts/listsContext";
 import { getItemId } from "../utils";
+import { resetInputs } from "../utils";
 
 function AddTodoList() {
   const { addTodoList } = useContext(TodoListsContext);
@@ -15,7 +16,13 @@ function AddTodoList() {
     const descValue = descInputRef.current.value;
 
     // check input validation
-    if (!titleValue.trim() || !descValue.trim()) return;
+    if (
+      !titleValue ||
+      titleValue.trim() === "" ||
+      !descValue ||
+      titleValue.trim() === ""
+    )
+      return;
 
     const todoList = {
       id: getItemId(),
@@ -24,13 +31,26 @@ function AddTodoList() {
     };
 
     addTodoList(todoList);
+    // reset inputs to their empty state
+    resetInputs([titleInputRef, descInputRef]);
   };
 
   return (
     <form className="addListForm" onSubmit={handleSubmit}>
-      <input ref={titleInputRef} name="title" type="text" />
-      <input ref={descInputRef} name="description" type="text" />
-      <button>submit</button>
+      <input
+        className="uk-input uk-form-width-medium"
+        ref={titleInputRef}
+        name="title"
+        placeholder="Title"
+        type="text"
+      />
+      <textarea
+        className="uk-textarea"
+        ref={descInputRef}
+        name="description"
+        placeholder="Description"
+      />
+      <button className="uk-button">submit</button>
     </form>
   );
 }
