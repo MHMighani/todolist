@@ -17,6 +17,13 @@ function TasksProvider({ children }) {
     setTasks(newTasksCollection);
   };
 
+  const deleteRelatedTasks = (todoListId) => {
+    const newTasksCollection = tasks.filter(
+      (task) => task.todoListId !== todoListId
+    );
+    setTasks(newTasksCollection);
+  };
+
   const editTask = (taskId, editedTask) => {
     const newTasks = tasks.map((task) => {
       if (task.id === taskId) {
@@ -34,7 +41,9 @@ function TasksProvider({ children }) {
   }, [tasks]);
 
   return (
-    <TodoTasksContext.Provider value={{ tasks, addTask, deleteTask, editTask }}>
+    <TodoTasksContext.Provider
+      value={{ tasks, addTask, deleteTask, editTask, deleteRelatedTasks }}
+    >
       {children}
     </TodoTasksContext.Provider>
   );

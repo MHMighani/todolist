@@ -7,10 +7,9 @@ function TodoListsProvider({ children }) {
   const initLists = getFromLocalStorage("todoLists");
 
   const [todoLists, setTodoLists] = useState(initLists);
-  const [selectedList, setSelectedList] = useState(todoLists?.[0]);
+  const [selectedList, setSelectedList] = useState(null);
 
   const addTodoList = (newTodoList) => {
-    console.log(newTodoList);
     setTodoLists((prevTodoLists) => [...prevTodoLists, { ...newTodoList }]);
   };
 
@@ -18,6 +17,11 @@ function TodoListsProvider({ children }) {
     const newTodoLists = todoLists.filter(
       (todoList) => todoList.id !== todoListId
     );
+
+    // removing selected list if deleting it
+    if (todoListId === selectedList?.id) {
+      setSelectedList(null);
+    }
 
     setTodoLists(newTodoLists);
   };
