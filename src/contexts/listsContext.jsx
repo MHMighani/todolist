@@ -7,6 +7,7 @@ function TodoListsProvider({ children }) {
   const initLists = getFromLocalStorage("todoLists");
 
   const [todoLists, setTodoLists] = useState(initLists);
+  const [selectedList, setSelectedList] = useState(todoLists?.[0]);
 
   const addTodoList = (newTodoList) => {
     console.log(newTodoList);
@@ -38,7 +39,14 @@ function TodoListsProvider({ children }) {
 
   return (
     <TodoListsContext.Provider
-      value={{ addTodoList, deleteTodoList, editTodoList, todoLists }}
+      value={{
+        addTodoList,
+        deleteTodoList,
+        editTodoList,
+        todoLists,
+        selectedList,
+        setSelectedList,
+      }}
     >
       {children}
     </TodoListsContext.Provider>
