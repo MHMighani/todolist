@@ -1,7 +1,6 @@
 import { useRef, useContext } from "react";
 import { TodoListsContext } from "../contexts/listsContext";
-import { getItemId } from "../utils";
-import { resetInputs } from "../utils";
+import { getItemId, resetInputs, checkInputsValidation } from "../utils";
 
 function AddTodoList() {
   const { addTodoList } = useContext(TodoListsContext);
@@ -16,13 +15,7 @@ function AddTodoList() {
     const descValue = descInputRef.current.value;
 
     // check input validation
-    if (
-      !titleValue ||
-      titleValue.trim() === "" ||
-      !descValue ||
-      titleValue.trim() === ""
-    )
-      return;
+    if (!checkInputsValidation([titleValue, descValue])) return;
 
     const todoList = {
       id: getItemId(),

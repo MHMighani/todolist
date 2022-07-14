@@ -1,7 +1,6 @@
 import { useRef, useContext } from "react";
 import { TodoTasksContext } from "../contexts/tasksContext";
-import { getItemId } from "../utils";
-import resetInputs from "../utils/resetInputs";
+import { getItemId, resetInputs, checkInputsValidation } from "../utils";
 
 function AddTask({ todoListId }) {
   const { addTask } = useContext(TodoTasksContext);
@@ -12,7 +11,7 @@ function AddTask({ todoListId }) {
 
     const taskTextValue = taskTextInputRef.current.value;
 
-    if (!taskTextValue || taskTextValue.trim() === "") return;
+    if (!checkInputsValidation([taskTextValue])) return;
 
     const task = {
       id: getItemId(),
