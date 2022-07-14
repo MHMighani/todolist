@@ -1,6 +1,7 @@
 import { useRef, useContext } from "react";
 import { TodoTasksContext } from "../contexts/tasksContext";
 import { getItemId, resetInputs, checkInputsValidation } from "../utils";
+import { FaPlus, FaTimes } from "react-icons/fa";
 
 function AddTask({ todoListId }) {
   const { addTask } = useContext(TodoTasksContext);
@@ -25,9 +26,16 @@ function AddTask({ todoListId }) {
     resetInputs([taskTextInputRef]);
   };
   return (
-    <form onSubmit={handleSubmit} className="addTaskForm">
-      <input ref={taskTextInputRef} name="taskText" type="text" />
-      <button>Add Task</button>
+    <form onSubmit={handleSubmit} className="uk-form addTaskForm">
+      <input
+        className="uk-input uk-form-width-large uk-margin-right"
+        ref={taskTextInputRef}
+        name="taskText"
+        type="text"
+      />
+      <button className="uk-button uk-button-primary">
+        <FaPlus />
+      </button>
     </form>
   );
 }

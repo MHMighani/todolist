@@ -1,3 +1,5 @@
+import { FaTrash, FaEdit, FaCheck, FaTimes } from "react-icons/fa";
+
 function ButtonGroup({
   onSaveBtnClick,
   onEditBtnClick,
@@ -7,20 +9,32 @@ function ButtonGroup({
 }) {
   const btnGroup = editMode ? (
     <>
-      <button onClick={onSaveBtnClick} className="uk-button">
-        save
+      <button
+        onClick={onSaveBtnClick}
+        className="uk-button uk-button-small uk-button-primary"
+      >
+        <FaCheck />
       </button>
-      <button onClick={onCancelBtnClick} className="uk-button">
-        cancel
+      <button
+        onClick={onCancelBtnClick}
+        className="uk-button uk-button-small uk-button-danger"
+      >
+        <FaTimes />
       </button>
     </>
   ) : (
     <>
-      <button className="uk-button" onClick={onDeleteBtnClick}>
-        delete
+      <button
+        className="uk-button uk-button-small uk-button-danger"
+        onClick={onDeleteBtnClick}
+      >
+        <FaTrash />
       </button>
-      <button onClick={onEditBtnClick} className="uk-button">
-        Edit
+      <button
+        onClick={onEditBtnClick}
+        className="uk-button uk-button-small uk-button-primary"
+      >
+        <FaEdit />
       </button>
     </>
   );

@@ -5,8 +5,13 @@ import TodoList from "./todoList";
 import { TodoTasksContext } from "../contexts/tasksContext";
 
 function TodoLists() {
-  const { todoLists, deleteTodoList, setSelectedList, editTodoList } =
-    useContext(TodoListsContext);
+  const {
+    todoLists,
+    deleteTodoList,
+    setSelectedList,
+    editTodoList,
+    selectedList,
+  } = useContext(TodoListsContext);
   const { deleteRelatedTasks } = useContext(TodoTasksContext);
 
   const handleDeleteList = (todoListId) => {
@@ -14,12 +19,21 @@ function TodoLists() {
     deleteTodoList(todoListId);
   };
 
+  const getSelectedClass = (listId) => {
+    return listId === selectedList?.id ? "uk-background-muted" : "";
+  };
+
   return (
     <div className="lists-section">
       <AddTodoList />
       <ul className="uk-list uk-list-divider">
         {todoLists.map((todoList) => (
-          <li className="todoList" key={todoList.id}>
+          <li
+            className={`todoList uk-padding-small ${getSelectedClass(
+              todoList.id
+            )}`}
+            key={todoList.id}
+          >
             <TodoList
               onSelectList={setSelectedList}
               todoList={todoList}

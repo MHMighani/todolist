@@ -37,21 +37,29 @@ function TodoTask({ task }) {
 
   const renderTextField = () => {
     if (editMode) {
-      return <input ref={taskTextRef} className="uk-text" />;
+      return (
+        <input ref={taskTextRef} className="uk-input uk-form-width-medium" />
+      );
     }
-    return <p ref={taskTextRef}>{task.text}</p>;
+    return (
+      <span className="uk-text-lead" ref={taskTextRef}>
+        {task.text}
+      </span>
+    );
   };
 
   return (
     <>
-      <input
-        ref={checkBoxRef}
-        type="checkbox"
-        className="uk-checkbox todoTask__status"
-        onChange={() => editTask(task.id, { isDone: !task.isDone })}
-        checked={task.isDone}
-      />
-      {renderTextField()}
+      <label className="uk-form-label uk-margin-right task__content">
+        <input
+          ref={checkBoxRef}
+          type="checkbox"
+          className="uk-checkbox uk-margin-small-right todoTask__status"
+          onChange={() => editTask(task.id, { isDone: !task.isDone })}
+          checked={task.isDone}
+        />
+        {renderTextField()}
+      </label>
       <ButtonGroup
         onSaveBtnClick={handleSaveBtn}
         onCancelBtnClick={handleCancelBtn}

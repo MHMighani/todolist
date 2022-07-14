@@ -49,12 +49,14 @@ function TodoList({ todoList, onSelectList, onDeleteList, editList }) {
             type="text"
             name="title"
             value={formState.title}
+            className="uk-input uk-margin-small-bottom"
           />
           <input
             onChange={handleInputChange}
             placeholder="Description"
             type="text"
             name="description"
+            className="uk-input"
             value={formState.description}
           />
         </>
@@ -62,15 +64,20 @@ function TodoList({ todoList, onSelectList, onDeleteList, editList }) {
     }
     return (
       <>
-        <h3 className="todoList__title">{formState.title}</h3>
-        <p className="todoList__description">{formState.description}</p>
+        <div className="uk-text-lead todoList__title">{formState.title}</div>
+        <div className="uk-text-meta todoList__description">
+          {formState.description}
+        </div>
       </>
     );
   };
 
   return (
     <>
-      <div onClick={() => onSelectList(todoList)} className="todoList__content">
+      <div
+        onClick={() => onSelectList(todoList)}
+        className="uk-margin-bottom todoList__content"
+      >
         {renderTextFields()}
       </div>
       <ButtonGroup

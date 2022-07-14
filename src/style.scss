@@ -1,0 +1,54 @@
+// task section
+$tasksSectionPadding: 1rem 2.5rem;
+
+// list section
+$listsSectionPadding: 1rem;
+$listsSectionBackground: aqua;
+$listsSectionWidth: 350px;
+
+
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+#root,body,html,.App{
+    height: 100%;
+    
+}
+
+.main-content{
+    display: flex;
+    height: 100%;
+}
+
+
+.tasks-section{
+    width: 100%;
+    padding: $tasksSectionPadding;
+    overflow-y: scroll;
+}
+
+.lists-section{
+    width: $listsSectionWidth;
+    height: 100%;
+    background-color: $listsSectionBackground;
+    padding: $listsSectionPadding;
+    overflow-y: scroll;
+}
+
+.todoList{
+    &__content{
+        cursor: pointer;
+    }
+}
+
+.todoTask{
+    display: flex;
+    max-width: 400px;
+
+    .task__content{
+        flex-grow: 1;
+    }
+}

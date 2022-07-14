@@ -45,9 +45,9 @@ function AddTodoList() {
   );
 
   const addFormsState = (
-    <form className="addListForm" onSubmit={handleSubmit}>
+    <form className="addListForm uk-padding-small" onSubmit={handleSubmit}>
       <input
-        className="uk-input uk-form-width-medium"
+        className="uk-input uk-form-width-medium uk-margin-small-bottom"
         ref={titleInputRef}
         name="title"
         placeholder="Title"
@@ -60,7 +60,7 @@ function AddTodoList() {
         placeholder="Description"
       />
       {/* confirm add list */}
-      <div className="uk-button-group">
+      <div className="uk-button-group uk-margin-small-top">
         <button className="uk-button uk-button-primary uk-button-small">
           <FaPlus />
         </button>
