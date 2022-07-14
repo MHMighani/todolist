@@ -1,5 +1,6 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { TodoTasksContext } from "../contexts/tasksContext";
+import ButtonGroup from "./buttonGroup";
 
 function TodoTask({ task }) {
   const { deleteTask, editTask } = useContext(TodoTasksContext);
@@ -13,37 +14,26 @@ function TodoTask({ task }) {
     taskTextRef.current.value = task.text;
   });
 
-  const btnGroup = !editMode ? (
-    <>
-      <button className="uk-button" onClick={() => deleteTask(task.id)}>
-        delete
-      </button>
-      <button onClick={() => setEditMode(true)} className="uk-button">
-        Edit
-      </button>
-    </>
-  ) : (
-    <>
-      <button
-        onClick={() => {
-          editTask(task.id, { text: taskTextRef.current.value });
-          setEditMode(false);
-        }}
-        className="uk-button"
-      >
-        save
-      </button>
-      <button onClick={() => setEditMode(false)} className="uk-button">
-        cancel
-      </button>
-    </>
-  );
+  const handleDeleteBtn = () => {
+    deleteTask(task.id);
+  };
+
+  const handleEditBtn = () => {
+    setEditMode(true);
+  };
+
+  const handleSaveBtn = () => {
+    editTask(task.id, { text: taskTextRef.current.value });
+    setEditMode(false);
+  };
+
+  const handleCancelBtn = () => {
+    setEditMode(false);
+  };
 
   const renderTextField = () => {
     if (editMode) {
-      return (
-        <input readOnly={!editMode} ref={taskTextRef} className="uk-text" />
-      );
+      return <input ref={taskTextRef} className="uk-text" />;
     }
     return <p ref={taskTextRef}>{task.text}</p>;
   };
@@ -58,7 +48,14 @@ function TodoTask({ task }) {
         checked={task.isDone}
       />
       {renderTextField()}
-      <div className="uk-button-group">{btnGroup}</div>
+      <ButtonGroup
+        onSaveBtnClick={handleSaveBtn}
+        onCancelBtnClick={handleCancelBtn}
+        onDeleteBtnClick={handleDeleteBtn}
+        onEditBtnClick={handleEditBtn}
+        editMode={editMode}
+        setEditMode={setEditMode}
+      />
     </>
   );
 }
