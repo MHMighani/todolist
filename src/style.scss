@@ -4,7 +4,7 @@ $tasksSectionPadding: 1rem 2.5rem;
 // list section
 $listsSectionPadding: 1rem;
 $listsSectionBackground: aqua;
-$listsSectionWidth: 300px;
+$listsSectionWidth: 250px;
 
 
 *{
@@ -17,6 +17,12 @@ $listsSectionWidth: 300px;
     height: 100%;
     
 }
+
+.App{
+    display: flex;
+    flex-direction: column;
+}
+
 
 .content-section{
     display: flex;
@@ -33,6 +39,7 @@ $listsSectionWidth: 300px;
 
 .tasks-section{
     width: 100%;
+    height: 100%;
     padding: $tasksSectionPadding;
     overflow-y: scroll;
 }
@@ -57,5 +64,12 @@ $listsSectionWidth: 300px;
 
     .task__content{
         flex-grow: 1;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .lists-section{
+        position: absolute;
+        z-index: 2;
     }
 }
