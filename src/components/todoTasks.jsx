@@ -11,20 +11,25 @@ function TodoTasks() {
   const relatedTasks =
     selectedList && tasks.filter((task) => task.todoListId === selectedList.id);
 
-  if (!selectedList) {
-    return <h2>No list selected.</h2>;
-  }
-
   return (
     <section className="tasks-section">
-      <AddTask todoListId={selectedList.id} />
-      <ul className="todoTasks-list uk-list">
-        {relatedTasks.map((task) => (
-          <li className="todoTask" key={task.id}>
-            <TodoTask key={task.id} task={task} />
-          </li>
-        ))}
-      </ul>
+      {selectedList ? (
+        <>
+          <div>
+            <h2>{selectedList.title}</h2>
+          </div>
+          <AddTask todoListId={selectedList.id} />
+          <ul className="todoTasks-list uk-list">
+            {relatedTasks.map((task) => (
+              <li className="todoTask" key={task.id}>
+                <TodoTask key={task.id} task={task} />
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <h2 className="uk-alert">No todo-list selected.</h2>
+      )}
     </section>
   );
 }
