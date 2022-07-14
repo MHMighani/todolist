@@ -1,6 +1,7 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { TodoTasksContext } from "../contexts/tasksContext";
 import ButtonGroup from "./buttonGroup";
+import { checkInputsValidation } from "../utils";
 
 function TodoTask({ task }) {
   const { deleteTask, editTask } = useContext(TodoTasksContext);
@@ -23,6 +24,9 @@ function TodoTask({ task }) {
   };
 
   const handleSaveBtn = () => {
+    // check input validation before submitting edit
+    if (!checkInputsValidation([taskTextRef.current.value])) return;
+
     editTask(task.id, { text: taskTextRef.current.value });
     setEditMode(false);
   };

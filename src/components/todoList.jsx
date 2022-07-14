@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ButtonGroup from "./buttonGroup";
+import { checkInputsValidation } from "../utils";
 
 function TodoList({ todoList, onSelectList, onDeleteList, editList }) {
   const [editMode, setEditMode] = useState(false);
@@ -21,6 +22,10 @@ function TodoList({ todoList, onSelectList, onDeleteList, editList }) {
   };
 
   const handleSaveBtn = () => {
+    // check input validation before submitting edit
+    if (!checkInputsValidation([formState.title, formState.description]))
+      return;
+
     handleEditSubmit();
     setEditMode(false);
   };
