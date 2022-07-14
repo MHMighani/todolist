@@ -64,8 +64,10 @@ function TodoList({ todoList, onSelectList, onDeleteList, editList }) {
     }
     return (
       <>
-        <div className="uk-text-lead todoList__title">{formState.title}</div>
-        <div className="uk-text-meta todoList__description">
+        <div className="uk-text-lead todoList__title uk-text-break">
+          {formState.title}
+        </div>
+        <div className="uk-text-meta todoList__description uk-text-break">
           {formState.description}
         </div>
       </>

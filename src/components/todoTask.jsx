@@ -42,7 +42,7 @@ function TodoTask({ task }) {
       );
     }
     return (
-      <span className="uk-text-lead task__text" ref={taskTextRef}>
+      <span className="uk-text-lead task__text uk-text-break" ref={taskTextRef}>
         {task.text}
       </span>
     );

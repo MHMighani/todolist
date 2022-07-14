@@ -60,12 +60,12 @@ $listsSectionWidth: 250px;
 
 .todoTask{
     display: flex;
-    max-width: 400px;
-
+    
     .task__content{
+        max-width: 400px;
         flex-grow: 1;
     }
-
+    
     &.done .task__text{
         text-decoration: line-through;
     }
