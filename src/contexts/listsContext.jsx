@@ -26,9 +26,9 @@ function TodoListsProvider({ children }) {
     setTodoLists(newTodoLists);
   };
 
-  const editTodoList = (editedList) => {
+  const editTodoList = (listId, editedList) => {
     const newTodoList = todoLists.map((todoList) => {
-      if (todoList.id === editTodoList.id) {
+      if (todoList.id === listId) {
         return { ...todoList, ...editedList };
       }
       return todoList;

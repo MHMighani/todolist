@@ -5,7 +5,7 @@ import TodoList from "./todoList";
 import { TodoTasksContext } from "../contexts/tasksContext";
 
 function TodoLists() {
-  const { todoLists, deleteTodoList, setSelectedList } =
+  const { todoLists, deleteTodoList, setSelectedList, editTodoList } =
     useContext(TodoListsContext);
   const { deleteRelatedTasks } = useContext(TodoTasksContext);
 
@@ -17,15 +17,15 @@ function TodoLists() {
   return (
     <div className="lists-section">
       <AddTodoList />
-      <ul>
+      <ul className="uk-list uk-list-divider">
         {todoLists.map((todoList) => (
           <li className="todoList" key={todoList.id}>
-            <div onClick={() => setSelectedList(todoList)}>
-              <TodoList todoList={todoList} />
-            </div>
-            <button onClick={() => handleDeleteList(todoList.id)}>
-              Delete
-            </button>
+            <TodoList
+              onSelectList={setSelectedList}
+              todoList={todoList}
+              onDeleteList={handleDeleteList}
+              editList={editTodoList}
+            />
           </li>
         ))}
       </ul>
