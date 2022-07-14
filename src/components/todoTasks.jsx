@@ -21,7 +21,10 @@ function TodoTasks() {
           <AddTask todoListId={selectedList.id} />
           <ul className="todoTasks-list uk-list">
             {relatedTasks.map((task) => (
-              <li className="todoTask" key={task.id}>
+              <li
+                className={`${task.isDone ? "done" : ""} todoTask`}
+                key={task.id}
+              >
                 <TodoTask key={task.id} task={task} />
               </li>
             ))}

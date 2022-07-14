@@ -65,6 +65,10 @@ $listsSectionWidth: 250px;
     .task__content{
         flex-grow: 1;
     }
+
+    &.done .task__text{
+        text-decoration: line-through;
+    }
 }
 
 @media screen and (max-width: 480px) {
