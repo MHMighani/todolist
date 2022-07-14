@@ -4,7 +4,7 @@ $tasksSectionPadding: 1rem 2.5rem;
 // list section
 $listsSectionPadding: 1rem;
 $listsSectionBackground: aqua;
-$listsSectionWidth: 350px;
+$listsSectionWidth: 300px;
 
 
 *{
@@ -18,9 +18,16 @@ $listsSectionWidth: 350px;
     
 }
 
+.content-section{
+    display: flex;
+    height: 100%;
+    
+}
+
 .main-content{
     display: flex;
     height: 100%;
+    width: 100%;
 }
 
 
